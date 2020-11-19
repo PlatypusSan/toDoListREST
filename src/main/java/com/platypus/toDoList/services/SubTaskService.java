@@ -9,6 +9,9 @@ import com.platypus.toDoList.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class SubTaskService {
 
@@ -18,17 +21,18 @@ public class SubTaskService {
     @Autowired
     TaskRepository taskRepository;
 
-    public TaskList getAllSubTasks(String taskId) {
-        TaskList tasks = new TaskList();
-
-        return tasks;
+    public List<SubTask> getAllSubTasks(String taskName) {
+        List<SubTask> subTasks = new ArrayList<>();
+        subTaskRepository.findByTaskName(taskName).forEach(subTasks::add);
+        return subTasks;
     }
 
     public SubTask getSubTask(int id) {
         return subTaskRepository.getOne(id);
     }
 
-    public void addSubTask(SubTask subTask) {
+    public void addSubTask(SubTask subTask, String name) {
+        subTask.setTask(taskRepository.getOne(name));
         subTaskRepository.save(subTask);
     }
 }

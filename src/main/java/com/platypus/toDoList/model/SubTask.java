@@ -1,5 +1,7 @@
 package com.platypus.toDoList.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -14,10 +16,9 @@ public class SubTask {
     private String name;
     private String description;
     private boolean completed;
-
+    //@JsonIgnore
     @ManyToOne
     private Task task;
-
 
     public SubTask() {
     }
@@ -60,5 +61,9 @@ public class SubTask {
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
+
+    public Task getTask() { return task; }
+
+    public void setTask(Task task) { this.task = task; }
     // getters and setters
 }

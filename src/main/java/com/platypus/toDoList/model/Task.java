@@ -13,7 +13,8 @@ public class Task {
     private String name;
     private String description;
 
-
+  /*  @OneToMany
+    private List<SubTask> subTasks;*/
 
     private boolean completed;
 
@@ -49,5 +50,13 @@ public class Task {
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
+
+    /*public List<SubTask> getSubTasks() {
+        return subTasks;
+    }
+
+    public void setSubTasks(List<SubTask> subTasks) {
+        this.subTasks = subTasks;
+    }*/
     // getters and setters
 }
