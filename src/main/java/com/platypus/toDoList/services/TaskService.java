@@ -21,12 +21,8 @@ public class TaskService {
         return tasks;
     }
 
-    public Task getTask(int id) {
-        TaskList tasks = new TaskList();
-        for (Task task : repository.findAll()) {
-            tasks.add(task);
-        }
-        return tasks.get(id);
+    public Task getTask(String name) {
+        return repository.getOne(name);
     }
 
     public void addTask(Task task) {

@@ -10,31 +10,20 @@ import java.util.List;
 public class Task {
 
     @Id
-    private int id;
     private String name;
     private String description;
 
-    @OneToMany
-    private List<SubTask> subTasks;
+
 
     private boolean completed;
 
     public Task() {
     }
 
-    public Task(int id, String name, String description, boolean completed) {
-        this.id = id;
+    public Task(String name, String description, boolean completed) {
         this.name = name;
         this.description = description;
         this.completed = completed;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {

@@ -11,13 +11,13 @@ public class SubTask {
 
     @Id
     private int id;
+    private String name;
+    private String description;
+    private boolean completed;
 
     @ManyToOne
     private Task task;
 
-    private String name;
-    private String description;
-    private boolean completed;
 
     public SubTask() {
     }

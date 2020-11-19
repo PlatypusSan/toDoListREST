@@ -1,10 +1,9 @@
 package com.platypus.toDoList.repository;
 
-import com.platypus.toDoList.model.Task;
+import com.platypus.toDoList.model.SubTask;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TaskRepository extends JpaRepository<Task, String> {
-
+public interface SubTaskRepository extends JpaRepository<SubTask, Integer> {
 }
