@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface SubTaskRepository extends JpaRepository<SubTask, Integer> {
-    public List<SubTask> findByTaskName(String name);
+    List<SubTask> findByTaskName(String name);
 }

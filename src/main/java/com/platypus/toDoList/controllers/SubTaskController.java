@@ -19,18 +19,18 @@ public class SubTaskController {
     }
 
 
-    @GetMapping(path = "/task/{name}/subtask/{id}")
-    public SubTask getTask(@PathVariable String name, @PathVariable int id) {
+    @GetMapping(path = "/tasks/{name}/subtask/{id}")
+    public SubTask getSubTask(@PathVariable String name, @PathVariable int id) {
         return subTaskService.getSubTask(id);
     }
 
-    @GetMapping(path = "/task/{name}/subtasks")
-    public List<SubTask> getAllTasks(@PathVariable String name){
+    @GetMapping(path = "/tasks/{name}/subtasks")
+    public List<SubTask> getSubAllTasks(@PathVariable String name){
         return subTaskService.getAllSubTasks(name);
     }
 
-    @PostMapping(path = "/task/{name}/subtasks")
-    public void addTask(@RequestBody SubTask subTask, @PathVariable String name){
+    @PostMapping(path = "/tasks/{name}/subtasks")
+    public void addSubTask(@RequestBody SubTask subTask, @PathVariable String name){
         subTaskService.addSubTask(subTask, name);
     }
 }

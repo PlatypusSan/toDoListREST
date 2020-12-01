@@ -14,10 +14,7 @@ public class TaskController {
     @Autowired
     private TaskService taskService;
 
-
-    public TaskController() {
-
-    }
+    public TaskController() {}
 
     @GetMapping(path = "/tasks/{name}")
     public Task getTask(@PathVariable String name) { return taskService.getTask(name);
@@ -32,4 +29,6 @@ public class TaskController {
     public void addTask(@RequestBody Task task){
         taskService.addTask(task);
     }
+
+
 }

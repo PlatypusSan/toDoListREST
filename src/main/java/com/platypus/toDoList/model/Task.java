@@ -13,8 +13,8 @@ public class Task {
     private String name;
     private String description;
 
-  /*  @OneToMany
-    private List<SubTask> subTasks;*/
+    @OneToMany
+    private List<SubTask> subTasks;
 
     private boolean completed;
 
@@ -25,6 +25,10 @@ public class Task {
         this.name = name;
         this.description = description;
         this.completed = completed;
+    }
+
+    public void addSubTask(SubTask subTask) {
+        subTasks.add(subTask);
     }
 
     public String getName() {
@@ -51,12 +55,12 @@ public class Task {
         this.completed = completed;
     }
 
-    /*public List<SubTask> getSubTasks() {
+    public List<SubTask> getSubTasks() {
         return subTasks;
     }
 
     public void setSubTasks(List<SubTask> subTasks) {
         this.subTasks = subTasks;
-    }*/
+    }
     // getters and setters
 }

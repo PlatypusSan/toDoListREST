@@ -32,7 +32,8 @@ public class SubTaskService {
     }
 
     public void addSubTask(SubTask subTask, String name) {
-        subTask.setTask(taskRepository.getOne(name));
+        taskRepository.getOne(name).addSubTask(subTask);
+        //subTask.setTask(taskRepository.getOne(name));
         subTaskRepository.save(subTask);
     }
 }

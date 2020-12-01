@@ -2,35 +2,33 @@ package com.platypus.toDoList.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 
 @Entity
 public class SubTask {
 
     @Id
-    private int id;
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private long id;
+
     private String name;
     private String description;
     private boolean completed;
-    //@JsonIgnore
+
     @ManyToOne
     private Task task;
 
     public SubTask() {
     }
 
-    public SubTask(int id, String name, String description, boolean completed) {
-        this.id = id;
+    public SubTask(String name, String description, boolean completed) {
         this.name = name;
         this.description = description;
         this.completed = completed;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
