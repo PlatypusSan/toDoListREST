@@ -33,7 +33,13 @@ public class EventService {
             e.printStackTrace();
             return  eventRepository.findAll();
         }
-        //return eventRepository.findAll();
+        /*try {
+            return eventRepository.findAllByDateDay(new SimpleDateFormat("yyyy-MM-dd").parse(
+                    year + "-"+ month + "-" + day + " 00:00 GMT+00:00"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return  eventRepository.findAll();
+        }*/
     }
 
     public List<Event> getAllEvents(){
@@ -41,7 +47,6 @@ public class EventService {
     }
 
     public void addEvent(Event event){
-        System.out.println(event.getDate());
         eventRepository.save(event);
     }
 

@@ -3,6 +3,7 @@ package com.platypus.toDoList.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -12,6 +13,7 @@ public class Task {
     @Id
     private String name;
     private String description;
+    private String colour;
 
     @OneToMany
     private List<SubTask> subTasks;
@@ -21,14 +23,24 @@ public class Task {
     public Task() {
     }
 
-    public Task(String name, String description, boolean completed) {
+    public Task(String name, String description, boolean completed, String colour) {
         this.name = name;
         this.description = description;
         this.completed = completed;
+        this.colour = colour;
+        subTasks = new ArrayList<>();
     }
 
     public void addSubTask(SubTask subTask) {
         subTasks.add(subTask);
+    }
+
+    public String getColour() {
+        return colour;
+    }
+
+    public void setColour(String colour) {
+        this.colour = colour;
     }
 
     public String getName() {

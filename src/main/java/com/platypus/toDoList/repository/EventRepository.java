@@ -15,4 +15,5 @@ public interface EventRepository extends JpaRepository<Event, LocalDateTime> {
     //@Query("select a from Event a where a.date = :date")
     List<Event> findByDate( Date date);
     List<Event> findByDateBetween(Date date1, Date date2);
+    //List<Event> findAllByDate(Date date);
 }

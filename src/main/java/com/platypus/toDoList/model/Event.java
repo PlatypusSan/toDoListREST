@@ -3,8 +3,6 @@ package com.platypus.toDoList.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.Calendar;
 import java.util.Date;
 
 @Entity
@@ -12,11 +10,11 @@ public class Event {
 
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date date;
     private String name;
     private String description;
@@ -26,6 +24,13 @@ public class Event {
     private Task task;
 
     public Event() {
+    }
+
+    public Event(Date date, String name, String description, int duration) {
+        this.date = date;
+        this.name = name;
+        this.description = description;
+        this.duration = duration;
     }
 
     public int getDuration() {

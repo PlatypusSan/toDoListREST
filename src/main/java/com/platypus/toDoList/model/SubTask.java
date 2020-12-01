@@ -17,6 +17,7 @@ public class SubTask {
     private boolean completed;
 
     @ManyToOne
+    @JsonIgnore
     private Task task;
 
     public SubTask() {
