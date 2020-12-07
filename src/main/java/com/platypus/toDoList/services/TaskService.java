@@ -7,14 +7,17 @@ import com.platypus.toDoList.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class TaskService {
 
     @Autowired
     TaskRepository repository;
 
-    public TaskList getAllTasks() {
-        TaskList tasks = new TaskList();
+    public List<Task> getAllTasks() {
+        List<Task> tasks = new ArrayList<>();
         for (Task task : repository.findAll()) {
             tasks.add(task);
         }
@@ -28,4 +31,6 @@ public class TaskService {
     public void addTask(Task task) {
         repository.save(task);
     }
+
+
 }

@@ -16,9 +16,9 @@ public class SubTask {
     private String description;
     private boolean completed;
 
-    @ManyToOne
+    /*@ManyToOne
     @JsonIgnore
-    private Task task;
+    private Task task;*/
 
     public SubTask() {
     }
@@ -33,7 +33,7 @@ public class SubTask {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -61,8 +61,8 @@ public class SubTask {
         this.completed = completed;
     }
 
-    public Task getTask() { return task; }
+    /*public Task getTask() { return task; }
 
-    public void setTask(Task task) { this.task = task; }
+    public void setTask(Task task) { this.task = task; }*/
     // getters and setters
 }

@@ -1,6 +1,7 @@
 package com.platypus.toDoList.services;
 
 import com.platypus.toDoList.model.Event;
+import com.platypus.toDoList.model.Task;
 import com.platypus.toDoList.repository.EventRepository;
 import com.platypus.toDoList.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,12 +47,27 @@ public class EventService {
         return eventRepository.findAll();
     }
 
+    public Event getEvent(long id) {
+        return eventRepository.getOne(id);
+    }
+
     public void addEvent(Event event){
         eventRepository.save(event);
     }
 
     public void addEventWithTask(String taskName, Event event) {
-        event.setTask(taskRepository.getOne(taskName));
+        Task task = taskRepository.getOne(taskName);
+        event.setTask(task);
+
+        eventRepository.save(event);
+    }
+
+    public void deleteEvent(long id) {
+        eventRepository.deleteById(id);
+    }
+
+    public void putEvent(long id, Event event) {
+        event.setId(id);
         eventRepository.save(event);
     }
 }

@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-public interface EventRepository extends JpaRepository<Event, LocalDateTime> {
+public interface EventRepository extends JpaRepository<Event, Long> {
     //@Query("select a from Event a where a.date = :date")
     List<Event> findByDate( Date date);
     List<Event> findByDateBetween(Date date1, Date date2);

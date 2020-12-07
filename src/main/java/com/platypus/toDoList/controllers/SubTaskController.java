@@ -20,7 +20,7 @@ public class SubTaskController {
 
 
     @GetMapping(path = "/tasks/{name}/subtask/{id}")
-    public SubTask getSubTask(@PathVariable String name, @PathVariable int id) {
+    public SubTask getSubTask(@PathVariable String name, @PathVariable long id) {
         return subTaskService.getSubTask(id);
     }
 
@@ -32,5 +32,9 @@ public class SubTaskController {
     @PostMapping(path = "/tasks/{name}/subtasks")
     public void addSubTask(@RequestBody SubTask subTask, @PathVariable String name){
         subTaskService.addSubTask(subTask, name);
+    }
+    @PutMapping(path = "/tasks/{name}/subtasks")
+    public void putSubTask(@RequestBody SubTask subTask, @PathVariable String name) {
+        subTaskService.putSubTask(name,subTask);
     }
 }

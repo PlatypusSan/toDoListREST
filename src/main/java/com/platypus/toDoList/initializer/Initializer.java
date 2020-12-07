@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
+import java.util.Date;
 
 //@RequiredArgsConstructor
 @Component
@@ -52,25 +52,62 @@ public class Initializer implements ApplicationListener<ApplicationReadyEvent> {
 
 
             //tasks
-            Task task1 = new Task("task1", "task1 des", false , "ffff00");
-            Task task2 = new Task("task2", "task2 des", false , "ff9900");
+            Task task1 = new Task("Task12345", "task1 des", false, "#33ee55");
+            Task task2 = new Task("Task2", "task2 des", false, "#ee9944");
+            Task task3 = new Task("Task3", "task3 des", false, "#34ebde");
+
             taskService.addTask(task1);
             taskService.addTask(task2);
+            taskService.addTask(task3);
+
 
             //subtasks
-            SubTask subTask1 = new SubTask("sub1", "sub1 des", false);
+            SubTask subTask1 = new SubTask("subTask1", "sub1 des", false);
             subTask1.setId(1);
-            SubTask subTask2 = new SubTask("sub2", "sub2 des", true);
+            SubTask subTask2 = new SubTask("subTask2", "sub2 des", false);
             subTask2.setId(2);
+            SubTask subTask3 = new SubTask("subTask3", "sub3 des", false);
+            subTask2.setId(20);
+            SubTask subTask4 = new SubTask("subTask4", "sub4 des", false);
+            subTask2.setId(21);
 
-            subTaskService.addSubTask(subTask1, "task1");
-            subTaskService.addSubTask(subTask2, "task1");
+
+            subTaskService.addSubTask(subTask1, "Task12345");
+            subTaskService.addSubTask(subTask2, "Task12345");
+            subTaskService.addSubTask(subTask3, "Task12345");
+            subTaskService.addSubTask(subTask4, "Task12345");
+
             Event event1;
+            Event event2;
+            Event event3;
+            Event event4;
+            Event event5;
             //events
+            Date todayDate = new Date();
+            Date tomorrowDate = new Date();
+            tomorrowDate.setDate(todayDate.getDate() + 1);
+
+            String today = (todayDate.getYear() + 1900) + "-" + todayDate.getMonth() + "-" + todayDate.getDate();
+            String tomorrow = (tomorrowDate.getYear() + 1900) + "-" + tomorrowDate.getMonth() + "-" + tomorrowDate.getDate();
+            System.out.println(today);
+
             try {
-                event1 = new Event(new SimpleDateFormat("yyyy-MM-dd HH:mm z").parse("2015-01-01 03:00 GMT+00:00"),
-                        "event1","event1 des", 10);
-                eventService.addEventWithTask("task1", event1);
+                event1 = new Event(new SimpleDateFormat("yyyy-MM-dd HH:mm z").parse(today + " 03:00 GMT+00:00"),
+                        "event1", "event1 des", 10);
+                event2 = new Event(new SimpleDateFormat("yyyy-MM-dd HH:mm z").parse(today + " 05:05 GMT+00:00"),
+                        "event2", "event2 desdfaagg ggggggggggggg ggggggg ggggggggggdf dsgffdsgsfdg dsfgsdf gdsgdsfg fdg", 30);
+                event3 = new Event(new SimpleDateFormat("yyyy-MM-dd HH:mm z").parse(today + " 07:30 GMT+00:00"),
+                        "event3", "event3 des", 50);
+                event4 = new Event(new SimpleDateFormat("yyyy-MM-dd HH:mm z").parse(tomorrow + " 11:35 GMT+00:00"),
+                        "Event4", "event4 des", 110);
+                event5 = new Event(new SimpleDateFormat("yyyy-MM-dd HH:mm z").parse(tomorrow + " 14:30 GMT+00:00"),
+                        "event5", "", 200);
+                eventService.addEventWithTask("Task12345", event1);
+                eventService.addEvent(event2);
+                eventService.addEvent(event3);
+                eventService.addEvent(event4);
+                eventService.addEvent(event5);
+
             } catch (ParseException e) {
                 e.printStackTrace();
             }

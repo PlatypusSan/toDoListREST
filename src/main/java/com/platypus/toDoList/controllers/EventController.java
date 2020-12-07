@@ -16,6 +16,11 @@ public class EventController {
     @Autowired
     EventService eventService;
 
+    @GetMapping(path = "/event/{id}")
+    public  Event getEvent(@PathVariable long id) {
+        return eventService.getEvent(id);
+    }
+
     @GetMapping(path = "/events")
     public List<Event> getAllEvents(){
         return eventService.getAllEvents();
@@ -34,6 +39,16 @@ public class EventController {
     @PostMapping(path = "/events/{taskName}")
     public void addEventWithTask(@RequestBody Event event, @PathVariable String taskName){
         eventService.addEventWithTask(taskName, event);
+    }
+
+    @DeleteMapping(path = "events/{id}")
+    public void deleteEvent(@PathVariable long id) {
+        eventService.deleteEvent(id);
+    }
+
+    @PutMapping(path = "events/{id}")
+    public void putEvent(@RequestBody Event event, @PathVariable long id) {
+        eventService.putEvent(id, event);
     }
 
 }

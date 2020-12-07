@@ -7,6 +7,8 @@ import com.platypus.toDoList.services.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 public class TaskController {
@@ -21,7 +23,7 @@ public class TaskController {
     }
 
     @GetMapping(path = "/tasks")
-    public TaskList getAllTasks(){
+    public List<Task> getAllTasks(){
         return taskService.getAllTasks();
     }
 
@@ -29,6 +31,8 @@ public class TaskController {
     public void addTask(@RequestBody Task task){
         taskService.addTask(task);
     }
+
+
 
 
 }

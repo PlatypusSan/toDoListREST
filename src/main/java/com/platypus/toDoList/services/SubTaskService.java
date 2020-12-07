@@ -23,17 +23,24 @@ public class SubTaskService {
 
     public List<SubTask> getAllSubTasks(String taskName) {
         List<SubTask> subTasks = new ArrayList<>();
-        subTaskRepository.findByTaskName(taskName).forEach(subTasks::add);
+        //subTaskRepository.findByTaskName(taskName).forEach(subTasks::add);
         return subTasks;
     }
 
-    public SubTask getSubTask(int id) {
+    public SubTask getSubTask(long id) {
         return subTaskRepository.getOne(id);
     }
 
     public void addSubTask(SubTask subTask, String name) {
         taskRepository.getOne(name).addSubTask(subTask);
         //subTask.setTask(taskRepository.getOne(name));
-        subTaskRepository.save(subTask);
+        //subTaskRepository.save(subTask);
+        taskRepository.save(taskRepository.getOne(name));
+    }
+
+    public void putSubTask(String name, SubTask subTask){
+
+        subTaskRepository.saveAndFlush(subTask);
+
     }
 }
