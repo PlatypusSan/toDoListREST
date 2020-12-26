@@ -52,9 +52,9 @@ public class Initializer implements ApplicationListener<ApplicationReadyEvent> {
 
 
             //tasks
-            Task task1 = new Task("Task12345", "task1 des", false, "#33ee55");
-            Task task2 = new Task("Task2", "task2 des", false, "#ee9944");
-            Task task3 = new Task("Task3", "task3 des", false, "#34ebde");
+            Task task1 = new Task("Курсовой", "курсовой проект пгу, 5 семестр", false, "#33ee55");
+            Task task2 = new Task("Интервью", "", false, "#ee9944");
+            Task task3 = new Task("Ремонт", "", false, "#34ebde");
 
             taskService.addTask(task1);
             taskService.addTask(task2);
@@ -62,20 +62,20 @@ public class Initializer implements ApplicationListener<ApplicationReadyEvent> {
 
 
             //subtasks
-            SubTask subTask1 = new SubTask("subTask1", "sub1 des", false);
+            SubTask subTask1 = new SubTask("Клинет", "sub1 des", false);
             subTask1.setId(1);
-            SubTask subTask2 = new SubTask("subTask2", "sub2 des", false);
+            SubTask subTask2 = new SubTask("Сервер", "sub2 des", false);
             subTask2.setId(2);
-            SubTask subTask3 = new SubTask("subTask3", "sub3 des", false);
+            SubTask subTask3 = new SubTask("Записка", "sub3 des", false);
             subTask2.setId(20);
-            SubTask subTask4 = new SubTask("subTask4", "sub4 des", false);
+            SubTask subTask4 = new SubTask("Защита", "sub4 des", false);
             subTask2.setId(21);
 
 
-            subTaskService.addSubTask(subTask1, "Task12345");
-            subTaskService.addSubTask(subTask2, "Task12345");
-            subTaskService.addSubTask(subTask3, "Task12345");
-            subTaskService.addSubTask(subTask4, "Task12345");
+            subTaskService.addSubTask(subTask1, "Курсовой");
+            subTaskService.addSubTask(subTask2, "Курсовой");
+            subTaskService.addSubTask(subTask3, "Курсовой");
+            subTaskService.addSubTask(subTask4, "Курсовой");
 
             Event event1;
             Event event2;
@@ -93,16 +93,16 @@ public class Initializer implements ApplicationListener<ApplicationReadyEvent> {
 
             try {
                 event1 = new Event(new SimpleDateFormat("yyyy-MM-dd HH:mm z").parse(today + " 03:00 GMT+00:00"),
-                        "event1", "event1 des", 10);
+                        "Написать записку", "описание", 10);
                 event2 = new Event(new SimpleDateFormat("yyyy-MM-dd HH:mm z").parse(today + " 05:05 GMT+00:00"),
-                        "event2", "event2 desdfaagg ggggggggggggg ggggggg ggggggggggdf dsgffdsgsfdg dsfgsdf gdsgdsfg fdg", 30);
+                        "Покушать", "Чай с печеньем", 30);
                 event3 = new Event(new SimpleDateFormat("yyyy-MM-dd HH:mm z").parse(today + " 07:30 GMT+00:00"),
-                        "event3", "event3 des", 50);
+                        "Погладить кота", "", 50);
                 event4 = new Event(new SimpleDateFormat("yyyy-MM-dd HH:mm z").parse(tomorrow + " 11:35 GMT+00:00"),
-                        "Event4", "event4 des", 110);
+                        "Зарядка", "", 110);
                 event5 = new Event(new SimpleDateFormat("yyyy-MM-dd HH:mm z").parse(tomorrow + " 14:30 GMT+00:00"),
-                        "event5", "", 200);
-                eventService.addEventWithTask("Task12345", event1);
+                        "Покушать", "", 200);
+                eventService.addEventWithTask("Курсовой", event1);
                 eventService.addEvent(event2);
                 eventService.addEvent(event3);
                 eventService.addEvent(event4);

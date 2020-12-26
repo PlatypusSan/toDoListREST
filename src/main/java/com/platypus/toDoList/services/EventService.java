@@ -23,7 +23,6 @@ public class EventService {
 
     public List<Event> getAllEventsByDate(int year, int month, int day){
         try {
-            //return eventRepository.findByDate(new SimpleDateFormat("yyyy-MM-dd HH:mm z").parse("2015-01-01 03:00 GMT+00:00"));
             return eventRepository.findByDateBetween(
                     new SimpleDateFormat("yyyy-MM-dd HH:mm z").parse(
                             year + "-"+ month + "-" + day + " 00:00 GMT+00:00"),
@@ -34,13 +33,6 @@ public class EventService {
             e.printStackTrace();
             return  eventRepository.findAll();
         }
-        /*try {
-            return eventRepository.findAllByDateDay(new SimpleDateFormat("yyyy-MM-dd").parse(
-                    year + "-"+ month + "-" + day + " 00:00 GMT+00:00"));
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return  eventRepository.findAll();
-        }*/
     }
 
     public List<Event> getAllEvents(){
@@ -58,7 +50,6 @@ public class EventService {
     public void addEventWithTask(String taskName, Event event) {
         Task task = taskRepository.getOne(taskName);
         event.setTask(task);
-
         eventRepository.save(event);
     }
 
